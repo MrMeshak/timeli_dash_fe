@@ -8,12 +8,7 @@ export interface UserData {
 }
 
 async function fetchUserData(): Promise<UserData> {
-  return {
-    id: '0fcd04d2-886d-4a4d-9dcd-006d58ebf3eb',
-    firstName: 'Meshak',
-    lastName: 'Bain',
-    email: 'email@email.com',
-  };
+  return (await httpClient.get<UserData>('/api/user/info')).data;
 }
 
 export const userService = {
