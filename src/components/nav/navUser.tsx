@@ -27,7 +27,7 @@ export default function NavUser({ data }: NavUserProps) {
     mutationFn: authService.logout,
     onSuccess: () => {
       removePermissions();
-      navigate({ to: '/auth/login' });
+      navigate({ to: '/auth/login', replace: true });
     },
   });
 
