@@ -1,5 +1,5 @@
 import { Link, useNavigate } from '@tanstack/react-router';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { removePermissions } from '@/store/permissionsStore';
 import { authService } from '@/services/authService';
@@ -22,11 +22,13 @@ export interface NavUserProps {
 }
 
 export default function NavUser({ data }: NavUserProps) {
+  const queryClient = useQueryClient();
   const navigate = useNavigate();
   const logoutMutation = useMutation({
     mutationFn: authService.logout,
     onSuccess: () => {
       removePermissions();
+      queryClient.clear();
       navigate({ to: '/auth/login', replace: true });
     },
   });

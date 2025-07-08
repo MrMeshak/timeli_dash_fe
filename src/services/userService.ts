@@ -8,7 +8,7 @@ export interface UserData {
 }
 
 async function fetchUserData(): Promise<UserData> {
-  return (await httpClient.get<UserData>('/api/user/info')).data;
+  return (await httpClient.get<UserData>('/api/user/me')).data;
 }
 
 export const userService = {

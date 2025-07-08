@@ -9,9 +9,12 @@ import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
 import type { QueryClient } from '@tanstack/react-query';
 import { authRouteTree } from './authRoutes';
 import { dashRouteTree } from './dashRoutes';
+import { userRouteTree } from './userRoutes';
+import { AuthContext } from '@/hooks/useAuthContext';
 
 export interface RouterContext {
   queryClient: QueryClient;
+  authContext: ReturnType<typeof useAuthContext>;
 }
 
 export const rootRoute = createRootRouteWithContext<RouterContext>()({
@@ -37,4 +40,5 @@ export const routeTree = rootRoute.addChildren([
   homeRoute,
   authRouteTree,
   dashRouteTree,
+  userRouteTree,
 ]);

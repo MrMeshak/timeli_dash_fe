@@ -8,6 +8,7 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
+  useSidebar,
 } from '../ui/sidebar';
 import {
   Collapsible,
@@ -22,6 +23,8 @@ interface NavMainProps {
 }
 
 export default function NavMain({ items }: NavMainProps) {
+  const { setOpenMobile } = useSidebar();
+
   return (
     <SidebarGroup>
       <SidebarMenu>
@@ -49,7 +52,10 @@ export default function NavMain({ items }: NavMainProps) {
                           asChild
                           isActive={subItem.isActive}
                         >
-                          <Link to={subItem.url} />
+                          <Link
+                            to={subItem.url}
+                            onClick={() => setOpenMobile(false)}
+                          />
                         </SidebarMenuSubButton>
                       </SidebarMenuSubItem>
                     ))}
@@ -64,7 +70,7 @@ export default function NavMain({ items }: NavMainProps) {
                 isActive={item.isActive}
                 size="default"
               >
-                <Link to={item.url}>
+                <Link to={item.url} onClick={() => setOpenMobile(false)}>
                   {item.icon && <item.icon width="8" height="8" />}
                   <span>{item.title}</span>
                 </Link>

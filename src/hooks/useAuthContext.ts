@@ -1,6 +1,6 @@
 import { usePermissionStore } from '@/store/permissionsStore';
 
-export interface IAuthContext {
+export interface AuthContext {
   isAuthenticated: boolean;
   permissions: bigint;
 }

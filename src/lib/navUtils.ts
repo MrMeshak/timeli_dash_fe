@@ -27,8 +27,9 @@ export function getNavMenuData(pathName: string) {
       },
       {
         title: 'Users',
-        url: '/users',
+        url: '/user',
         icon: Users2,
+        isActive: pathName.startsWith('/user'),
       },
       {
         title: 'Bookings',

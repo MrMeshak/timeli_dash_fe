@@ -13,7 +13,8 @@ export const httpClient = axios.create({
 httpClient.interceptors.response.use(
   (res) => res,
   (error) => {
-    if (error.response.status === 401) {
+    if (error.response.status === 401 || error.response.status === 404) {
+      // Must include 404 codes because the authed routes with return a 404 if user is not logged in. This is to prevent spidering of backend api
       removePermissions();
       window.location.href = '/auth/login';
       return Promise.reject(error);

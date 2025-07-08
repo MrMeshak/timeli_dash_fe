@@ -1,3 +1,4 @@
+import { removePermissions } from '@/store/permissionsStore';
 import { httpClient } from './axios';
 
 export interface LoginPayload {
