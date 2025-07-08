@@ -10,7 +10,7 @@ import type { QueryClient } from '@tanstack/react-query';
 import { authRouteTree } from './authRoutes';
 import { dashRouteTree } from './dashRoutes';
 import { userRouteTree } from './userRoutes';
-import { AuthContext } from '@/hooks/useAuthContext';
+import { useAuthContext } from '@/hooks/useAuthContext';
 
 export interface RouterContext {
   queryClient: QueryClient;

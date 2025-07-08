@@ -6,8 +6,8 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 
 export default function NavUserWithData() {
   const userInfoQuery = useQuery({
-    queryKey: ['user', 'info'],
-    queryFn: userService.fetchUserData,
+    queryKey: ['user', 'me'],
+    queryFn: userService.fetchUserMeData,
     staleTime: Infinity,
   });
 

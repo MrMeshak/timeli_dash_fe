@@ -11,7 +11,7 @@ export interface LoginData {
 }
 
 async function login(payload: LoginPayload) {
-  return (await httpClient.post<LoginData>('api/auth/mlogin', payload)).data;
+  return (await httpClient.post<LoginData>('api/auth/dashlogin', payload)).data;
 }
 
 async function logout() {

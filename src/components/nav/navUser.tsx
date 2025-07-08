@@ -5,7 +5,7 @@ import { removePermissions } from '@/store/permissionsStore';
 import { authService } from '@/services/authService';
 
 import { LogOut, Settings } from 'lucide-react';
-import { UserData } from '@/services/userService';
+import { UserMeData } from '@/services/userService';
 import { Avatar, AvatarFallback } from '../ui/avatar';
 import { Button } from '../ui/button';
 import {
@@ -18,7 +18,7 @@ import {
 } from '../ui/dropdown-menu';
 
 export interface NavUserProps {
-  data: UserData;
+  data: UserMeData;
 }
 
 export default function NavUser({ data }: NavUserProps) {
