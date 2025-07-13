@@ -49,6 +49,10 @@
   --sidebar-border: oklch(0.92 0.004 286.32);
   --sidebar-ring: oklch(0.705 0.015 286.067);
 
+  --tslate-muted-foreground: var(--color-tslate-600);
+  --tslate-muted: var(--color-tslate-200);
+  --tslate-border: var(--color-tslate-400);
+
   --tpurple-muted-foreground: var(--color-tpurple-600);
   --tpurple-muted: var(--color-tpurple-200);
   --tpurple-border: var(--color-tpurple-400);
@@ -60,6 +64,10 @@
   --tslate-muted-foreground: var(--color-tslate-600);
   --tslate-muted: var(--color-tslate-200);
   --tslate-border: var(--color-tslate-400);
+
+  --tbrown-muted-foreground: var(--color-tbrown-600);
+  --tbrown-muted: var(--color-tbrown-200);
+  --tbrown-border: var(--color-tbrown-400);
 
   --tgold-muted-foreground: var(--color-tgold-600);
   --tgold-muted: var(--color-tgold-100);
@@ -106,6 +114,10 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.552 0.016 285.938);
 
+  --tslate-muted-foreground: var(--color-tslate-300);
+  --tslate-muted: var(--color-tslate-700);
+  --tslate-border: var(--color-tslate-500);
+
   --tpurple-muted-foreground: var(--color-tpurple-300);
   --tpurple-muted: var(--color-tpurple-700);
   --tpurple-border: var(--color-tpurple-500);
@@ -117,6 +129,10 @@
   --tslate-muted-foreground: var(--color-tslate-300);
   --tslate-muted: var(--color-tslate-700);
   --tslate-border: var(--color-tslate-500);
+
+  --tbrown-muted-foreground: var(--color-tbrown-300);
+  --tbrown-muted: var(--color-tbrown-700);
+  --tbrown-border: var(--color-tbrown-500);
 
   --tgold-muted-foreground: var(--color-tgold-300);
   --tgold-muted: var(--color-tgold-700);
@@ -164,6 +180,10 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
+  --color-tslate-muted-foreground: var(--tslate-muted-foreground);
+  --color-tslate-muted: var(--tslate-muted);
+  --color-tslate-border: var(--tslate-border);
+
   --color-tpurple-muted-foreground: var(--tpurple-muted-foreground);
   --color-tpurple-muted: var(--tpurple-muted);
   --color-tpurple-border: var(--tpurple-border);
@@ -172,12 +192,16 @@
   --color-tmaroon-muted: var(--tmaroon-muted);
   --color-tmaroon-border: var(--tmaroon-border);
 
+  --color-tbrown-muted-foreground: var(--tbrown-muted-foreground);
+  --color-tbrown-muted: var(--tbrown-muted);
+  --color-tbrown-border: var(--tbrown-border);
+
   --color-tgold-muted: var(--tgold-muted);
   --color-tgold-muted-foreground: var(--tgold-muted-foreground);
   --color-tgold-border: var(--tgold-border);
 
   --color-tgreen-muted: var(--tgreen-muted);
-  --color-tgreen-muted-forground: var(--tgreen-muted-foreground);
+  --color-tgreen-muted-foreground: var(--tgreen-muted-foreground);
   --color-tgreen-border: var(--tgreen-border);
 
   --color-tslate-950: oklch(0.13 0.04 265);
