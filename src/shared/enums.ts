@@ -14,9 +14,8 @@ export function formatUserStatus(s: UserStatus) {
   return statusLabels[s];
 }
 
-export const Color = {
-  PRIMARY: 'PRIMARY',
-  SECONDARY: 'SECONDARY',
+export const ThemeColor = {
+  ZINC: 'ZINC',
   SLATE: 'SLATE',
   PURPLE: 'PURPLE',
   MAROON: 'MAROON',
@@ -24,4 +23,4 @@ export const Color = {
   GOLD: 'GOLD',
   GREEN: 'GREEN',
 } as const;
-export type Color = (typeof Color)[keyof typeof Color];
+export type ThemeColor = (typeof ThemeColor)[keyof typeof ThemeColor];

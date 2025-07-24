@@ -1,5 +1,5 @@
 import { httpClient } from './axios';
-import { Color, UserStatus } from '@/shared/enums';
+import { ThemeColor, UserStatus } from '@/shared/enums';
 
 export interface UserMeData {
   id: string;
@@ -17,7 +17,7 @@ export interface UserMetaData {
     id: string;
     name: string;
     label: string;
-    color: Color;
+    color: ThemeColor;
   }[];
 }
 
@@ -49,80 +49,33 @@ export async function fetchUserMetaData(): Promise<UserMetaData> {
 export interface UserTablePayload {
   pageIndex: number;
   pageSize: number;
+  searchTerm?: string;
+  fRole?: string;
+  fStatus?: string;
 }
 
 export interface UserTableData {
   rowCount: number;
   rowData: {
-    user: {
-      id: string;
-      firstName: string;
-      lastName: string;
-      email: string;
-      status: UserStatus;
-    };
+    id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    status: UserStatus;
     role: {
       id: string;
       name: string;
       label: string;
-      color: Color;
+      color: ThemeColor;
     };
   }[];
 }
 
 export async function fetchUserTableData(
-  _payload: UserTablePayload,
+  payload: UserTablePayload,
 ): Promise<UserTableData> {
-  return {
-    rowCount: 1,
-    rowData: [
-      {
-        user: {
-          id: 'eb19b801-eba7-4af2-be90-b239b8190649',
-          firstName: 'Meshak',
-          lastName: 'Bain',
-          email: 'testtesttesttest@gmail.com',
-          status: 'ACTIVE',
-        },
-        role: {
-          id: 'ae93ce6c-43ef-4352-bb49-a609ed173c3d',
-          name: 'COACH',
-          label: 'Coach',
-          color: 'GOLD',
-        },
-      },
-      {
-        user: {
-          id: 'eb19b801-eba7-4af2-be90-b239b8190649',
-          firstName: 'Michael',
-          lastName: 'Bain',
-          email: 'test@gmail.com',
-          status: 'SUSPENDED',
-        },
-        role: {
-          id: 'ae93ce6c-43ef-4352-bb49-a609ed173c3d',
-          name: 'USER',
-          label: 'User',
-          color: 'SLATE',
-        },
-      },
-      {
-        user: {
-          id: 'eb19b801-eba7-4af2-be90-b239b8190649',
-          firstName: 'Michael',
-          lastName: 'Bain',
-          email: 'test@gmail.com',
-          status: 'ACTIVE',
-        },
-        role: {
-          id: 'ae93ce6c-43ef-4352-bb49-a609ed173c3d',
-          name: 'Member',
-          label: 'Member',
-          color: 'PURPLE',
-        },
-      },
-    ],
-  };
+  return (await httpClient.post<UserTableData>('api/user/userTable', payload))
+    .data;
 }
 
 export const userService = {

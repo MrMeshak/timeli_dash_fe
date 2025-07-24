@@ -20,59 +20,65 @@ import { Badge } from '../ui/badge';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '../ui/button';
 import { PaginationLink } from '../ui/pagination';
-import { formatUserStatus, UserStatus } from '@/shared/enums';
+import { formatUserStatus, ThemeColor, UserStatus } from '@/shared/enums';
 
 function generateColumns() {
   const ch = createColumnHelper<UserTableData['rowData'][number]>();
 
   return [
-    ch.accessor('user', {
-      header: 'User',
-      cell: (info) => {
-        const user = info.getValue();
-        return (
-          <div className="flex items-center space-x-3">
-            <Avatar className="h-8 w-8">
-              <AvatarFallback className="text-muted-foreground border bg-transparent text-sm">
-                {user.firstName[0].toUpperCase()}
-                {user.lastName[0].toUpperCase()}
-              </AvatarFallback>
-            </Avatar>
-            <div>
-              <p className="font-semibold">{`${user.firstName} ${user.lastName}`}</p>
-              <p className="text-muted-foreground">{user.email}</p>
+    ch.accessor(
+      (row) => ({
+        firstName: row.firstName,
+        lastName: row.lastName,
+        email: row.email,
+      }),
+      {
+        id: 'avatar',
+        header: 'User',
+        cell: (info) => {
+          const data = info.getValue();
+          return (
+            <div className="flex items-center space-x-3">
+              <Avatar className="h-8 w-8">
+                <AvatarFallback className="text-muted-foreground border bg-transparent text-sm">
+                  {data.firstName[0].toUpperCase()}
+                  {data.lastName[0].toUpperCase()}
+                </AvatarFallback>
+              </Avatar>
+              <div>
+                <p className="font-semibold">{`${data.firstName} ${data.lastName}`}</p>
+                <p className="text-muted-foreground">{data.email}</p>
+              </div>
             </div>
-          </div>
-        );
+          );
+        },
       },
-    }),
+    ),
     ch.accessor('role', {
       header: 'Role',
       cell: (info) => {
         const role = info.getValue();
         switch (role.color) {
-          case 'PRIMARY':
-            return <Badge>{role.label}</Badge>;
-          case 'SECONDARY':
-            return <Badge variant="secondary">{role.label}</Badge>;
-          case 'PURPLE':
+          case ThemeColor.ZINC:
+            return <Badge variant="zinc"> </Badge>;
+          case ThemeColor.PURPLE:
             return <Badge variant="purple">{role.label}</Badge>;
-          case 'SLATE':
+          case ThemeColor.SLATE:
             return <Badge variant="slate">{role.label}</Badge>;
-          case 'MAROON':
+          case ThemeColor.MAROON:
             return <Badge variant="maroon">{role.label}</Badge>;
-          case 'BROWN':
+          case ThemeColor.BROWN:
             return <Badge variant="brown">{role.label}</Badge>;
-          case 'GOLD':
+          case ThemeColor.GOLD:
             return <Badge variant="gold">{role.label}</Badge>;
-          case 'GREEN':
+          case ThemeColor.GREEN:
             return <Badge variant="green">{role.label}</Badge>;
           default:
-            return <Badge variant="secondary">{role.label}</Badge>;
+            return <Badge variant="zinc">{role.label}</Badge>;
         }
       },
     }),
-    ch.accessor('user.status', {
+    ch.accessor('status', {
       header: 'Status',
       cell: (info) => {
         const status = info.getValue();
@@ -80,7 +86,7 @@ function generateColumns() {
           case UserStatus.ACTIVE:
             return <Badge variant="green">{formatUserStatus(status)}</Badge>;
           case UserStatus.SUSPENDED:
-            return <Badge variant="grey">{formatUserStatus(status)}</Badge>;
+            return <Badge variant="zinc">{formatUserStatus(status)}</Badge>;
           case UserStatus.PENDING:
             return <Badge variant="gold">{formatUserStatus(status)}</Badge>;
         }
@@ -89,9 +95,8 @@ function generateColumns() {
     ch.display({
       id: 'actions',
       cell: (info) => {
-        const user = info.row.original.user;
         return (
-          <Link to="/user/$id" params={{ id: user.id }}>
+          <Link to="/user/$id" params={{ id: info.row.original.id }}>
             <Button variant="secondary">
               <ChevronRight />
             </Button>

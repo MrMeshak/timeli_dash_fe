@@ -14,7 +14,7 @@ export const userRoute = createRoute({
 });
 
 const userSearchSchema = z.object({
-  pageIndex: z.number().int().nonnegative().catch(1),
+  pageIndex: z.number().int().nonnegative().catch(0),
   pageSize: z.number().int().min(1).max(100).catch(50),
   searchTerm: z.string().optional().catch(undefined),
   fRole: z.string().optional().catch(undefined),

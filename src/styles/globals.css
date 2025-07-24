@@ -49,6 +49,10 @@
   --sidebar-border: oklch(0.92 0.004 286.32);
   --sidebar-ring: oklch(0.705 0.015 286.067);
 
+  --tzinc-muted-foreground: var(--color-tzinc-600);
+  --tzinc-muted: var(--color-tzinc-200);
+  --tzinc-border: var(--color-tzinc-400);
+
   --tslate-muted-foreground: var(--color-tslate-600);
   --tslate-muted: var(--color-tslate-200);
   --tslate-border: var(--color-tslate-400);
@@ -60,10 +64,6 @@
   --tmaroon-muted-foreground: var(--color-tmaroon-600);
   --tmaroon-muted: var(--color-tmaroon-200);
   --tmaroon-border: var(--color-tmaroon-400);
-
-  --tslate-muted-foreground: var(--color-tslate-600);
-  --tslate-muted: var(--color-tslate-200);
-  --tslate-border: var(--color-tslate-400);
 
   --tbrown-muted-foreground: var(--color-tbrown-600);
   --tbrown-muted: var(--color-tbrown-200);
@@ -113,6 +113,10 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.552 0.016 285.938);
+
+  --tzinc-muted-forgorund: var(--color-tzinc-300);
+  --tzinc-muted: var(--color-tzinc-700);
+  --tzinc-border: var(--color-tzinc-500);
 
   --tslate-muted-foreground: var(--color-tslate-300);
   --tslate-muted: var(--color-tslate-700);
@@ -180,6 +184,10 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
+  --color-tzinc-muted-foreground: var(--tzinc-muted-forgorund);
+  --color-tzinc-muted: var(--tzinc-muted);
+  --color-tzinc-border: var(--tzinc-border);
+
   --color-tslate-muted-foreground: var(--tslate-muted-foreground);
   --color-tslate-muted: var(--tslate-muted);
   --color-tslate-border: var(--tslate-border);
@@ -203,6 +211,18 @@
   --color-tgreen-muted: var(--tgreen-muted);
   --color-tgreen-muted-foreground: var(--tgreen-muted-foreground);
   --color-tgreen-border: var(--tgreen-border);
+
+  --color-tzinc-50: oklch(0.985 0 0);
+  --color-tzinc-100: oklch(0.967 0.001 286.375);
+  --color-tzinc-200: oklch(0.92 0.004 286.32);
+  --color-tzinc-300: oklch(0.871 0.006 286.286);
+  --color-tzinc-400: oklch(0.705 0.015 286.067);
+  --color-tzinc-500: oklch(0.552 0.016 285.938);
+  --color-tzinc-600: oklch(0.442 0.017 285.786);
+  --color-tzinc-700: oklch(0.37 0.013 285.805);
+  --color-tzinc-800: oklch(0.274 0.006 286.033);
+  --color-tzinc-900: oklch(0.21 0.006 285.885);
+  --color-tzinc-950: oklch(0.141 0.005 285.823);
 
   --color-tslate-950: oklch(0.13 0.04 265);
   --color-tslate-900: oklch(0.21 0.04 265);
