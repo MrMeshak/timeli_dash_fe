@@ -1,7 +1,7 @@
 import { ContentLayout } from '@/components/layout/contentLayout';
 import UserTableCard from '@/components/user/userTableCard';
 
-export default function UserPage() {
+export default function UserTablePage() {
   return (
     <ContentLayout title="Users">
       <UserTableCard />

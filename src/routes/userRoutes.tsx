@@ -3,9 +3,9 @@ import { zodValidator } from '@tanstack/zod-adapter';
 import { createRoute, redirect } from '@tanstack/react-router';
 import { rootRoute } from './routes';
 import AppLayout from '@/components/layout/appLayout';
-import UserPage from '@/app/user/userPage';
 import UserDetailsPage from '@/app/user/userDetailPage';
 import { UserStatus } from '@/shared/enums';
+import UserTablePage from '@/app/user/userTablePage';
 
 export const userRoute = createRoute({
   getParentRoute: () => rootRoute,
@@ -13,7 +13,15 @@ export const userRoute = createRoute({
   component: AppLayout,
 });
 
-const userSearchSchema = z.object({
+export const userIndexRoute = createRoute({
+  getParentRoute: () => userRoute,
+  path: '/',
+  beforeLoad: () => {
+    throw redirect({ to: 'userTable' });
+  },
+});
+
+const userTableSearchSchema = z.object({
   pageIndex: z.number().int().nonnegative().catch(0),
   pageSize: z.number().int().min(1).max(100).catch(50),
   searchTerm: z.string().optional().catch(undefined),
@@ -24,12 +32,12 @@ const userSearchSchema = z.object({
     .catch(''),
 });
 
-export type UserSearchSchema = z.infer<typeof userSearchSchema>;
+export type UserSearchSchema = z.infer<typeof userTableSearchSchema>;
 
-export const userIndexRoute = createRoute({
+export const userTableRoute = createRoute({
   getParentRoute: () => userRoute,
-  path: '/',
-  validateSearch: zodValidator(userSearchSchema),
+  path: 'userTable',
+  validateSearch: zodValidator(userTableSearchSchema),
   beforeLoad: ({ context }) => {
     if (!context.authContext.isAuthenticated) {
       return redirect({ to: '/auth/login' });
@@ -39,16 +47,17 @@ export const userIndexRoute = createRoute({
   loader: ({ deps: { search } }) => {
     return { search };
   },
-  component: UserPage,
+  component: UserTablePage,
 });
 
 export const userDetailRoute = createRoute({
   getParentRoute: () => userRoute,
-  path: '$id',
+  path: 'userDetail/$id',
   component: UserDetailsPage,
 });
 
 export const userRouteTree = userRoute.addChildren([
   userIndexRoute,
+  userTableRoute,
   userDetailRoute,
 ]);

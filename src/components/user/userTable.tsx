@@ -15,7 +15,7 @@ import {
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { UserTableData } from '@/services/userService';
 import { Link } from '@tanstack/react-router';
-import { userIndexRoute } from '@/routes/userRoutes';
+import { userTableRoute } from '@/routes/userRoutes';
 import { Badge } from '../ui/badge';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '../ui/button';
@@ -96,7 +96,7 @@ function generateColumns() {
       id: 'actions',
       cell: (info) => {
         return (
-          <Link to="/user/$id" params={{ id: info.row.original.id }}>
+          <Link to="/user/userDetail/$id" params={{ id: info.row.original.id }}>
             <Button variant="secondary">
               <ChevronRight />
             </Button>
@@ -112,8 +112,8 @@ export interface UserTableProps {
 }
 
 export default function UserTable({ data }: UserTableProps) {
-  const navigate = userIndexRoute.useNavigate();
-  const { search } = userIndexRoute.useLoaderData();
+  const navigate = userTableRoute.useNavigate();
+  const { search } = userTableRoute.useLoaderData();
   const columns = generateColumns();
   const table = useReactTable({
     data: data.rowData,
@@ -139,7 +139,10 @@ export default function UserTable({ data }: UserTableProps) {
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
-                  <TableHead key={header.id}>
+                  <TableHead
+                    key={header.id}
+                    className="last:z[1] last:bg-card last: w-10 last:sticky last:right-0 last:rounded-md"
+                  >
                     {header.isPlaceholder
                       ? null
                       : flexRender(

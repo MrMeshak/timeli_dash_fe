@@ -1,11 +1,11 @@
-import { userIndexRoute } from '@/routes/userRoutes';
+import { userTableRoute } from '@/routes/userRoutes';
 import { userService } from '@/services/userService';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import UserTable from './userTable';
 import { Loader2Icon } from 'lucide-react';
 
 export default function UserTableWithData() {
-  const search = userIndexRoute.useSearch();
+  const search = userTableRoute.useSearch();
   const userTableQuery = useQuery({
     queryKey: ['user', 'table', { ...search }],
     queryFn: () => userService.fetchUserTableData({ ...search }),

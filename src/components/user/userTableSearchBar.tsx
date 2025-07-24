@@ -5,7 +5,7 @@ import { Button } from '../ui/button';
 import { Search, SlidersHorizontal } from 'lucide-react';
 import { Input } from '../ui/input';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { userIndexRoute } from '@/routes/userRoutes';
+import { userTableRoute } from '@/routes/userRoutes';
 import UserTableFilterModal from './userTableFilterModal';
 
 const userTableSearchBarFormSchema = z.object({
@@ -17,8 +17,8 @@ type UserTableSearchBarFormSchema = z.infer<
 >;
 
 export default function UserTableSearchBar() {
-  const navigate = userIndexRoute.useNavigate();
-  const search = userIndexRoute.useSearch();
+  const navigate = userTableRoute.useNavigate();
+  const search = userTableRoute.useSearch();
   const form = useForm<UserTableSearchBarFormSchema>({
     resolver: zodResolver(userTableSearchBarFormSchema),
     defaultValues: {

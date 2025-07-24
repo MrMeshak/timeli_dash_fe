@@ -1,3 +1,4 @@
+import { AuthContext } from '@/hooks/useAuthContext';
 import { HomeIcon, LayoutGrid, LucideIcon, Users2 } from 'lucide-react';
 
 export interface NavMenuItem {
@@ -27,7 +28,7 @@ export function getNavMenuData(pathName: string) {
       },
       {
         title: 'Users',
-        url: '/user',
+        url: '/user/userTable',
         icon: Users2,
         isActive: pathName.startsWith('/user'),
       },

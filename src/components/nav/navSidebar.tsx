@@ -15,7 +15,6 @@ import { Link, useLocation } from '@tanstack/react-router';
 import { HandMetal } from 'lucide-react';
 import NavMain from './navMain';
 import { getNavMenuData } from '@/lib/navUtils';
-import { cn } from '@/lib/utils';
 
 export default function NavSidebar({
   ...props
